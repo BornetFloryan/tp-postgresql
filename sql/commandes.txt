@@ -1,3 +1,4 @@
+psql -U postgres
 \i sql/01_creation_base.sql
 \c multi_lang
 \i sql/02_tables_insertions.sql
