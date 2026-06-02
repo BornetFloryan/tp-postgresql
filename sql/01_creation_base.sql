@@ -1,0 +1,1 @@
+CREATE DATABASE multi_lang WITH ENCODING = 'UTF8' TEMPLATE = template0;
