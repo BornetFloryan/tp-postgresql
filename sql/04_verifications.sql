@@ -1,15 +1,25 @@
 SELECT
-    nom,
-    prenom,
-    groupe
+    *
 FROM
-    etudiants
-ORDER BY
-    nom COLLATE "fr-FR-x-icu";
+    etudiants;
+
+SELECT
+    *
+FROM
+    matieres;
 
 SELECT
     *
 FROM
     notes;
 
-\ dp notes
+SELECT
+    nom,
+    prenom,
+    groupe
+FROM
+    etudiants
+ORDER BY
+    nom;
+
+\dp notes

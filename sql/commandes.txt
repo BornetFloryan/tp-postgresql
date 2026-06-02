@@ -1,0 +1,5 @@
+\i sql/01_creation_base.sql
+\c multi_lang
+\i sql/02_tables_insertions.sql
+\i sql/03_utilisateurs_privileges.sql
+\i sql/04_verifications.sql

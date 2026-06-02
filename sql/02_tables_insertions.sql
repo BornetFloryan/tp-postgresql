@@ -29,31 +29,31 @@ INSERT INTO
     etudiants (nom, prenom, email, groupe)
 VALUES
     (
-        'Évrard',
-        'Chloé',
+        'Evrard',
+        'Chloe',
         'chloe.evrard@but.fr',
         'BUT3 A'
     ),
     (
-        'Béranger',
-        'Léo',
+        'Beranger',
+        'Leo',
         'leo.beranger@but.fr',
         'BUT3 A'
     ),
-    ('Noël', 'Anaïs', 'anais.noel@but.fr', 'BUT3 B'),
+    ('Noel', 'Anais', 'anais.noel@but.fr', 'BUT3 B'),
     (
-        'Çağlar',
-        'Émile',
+        'Caglar',
+        'Emile',
         'emile.caglar@but.fr',
         'BUT3 B'
     ),
-    ('Dùrand', 'Zoé', 'zoe.durand@but.fr', 'BUT3 A');
+    ('Durand', 'Zoe', 'zoe.durand@but.fr', 'BUT3 A');
 
 INSERT INTO
     matieres (libelle, coefficient)
 VALUES
-    ('Base de données avancée', 2.0),
-    ('Développement web', 3.0),
+    ('Base de donnees avancee', 2.0),
+    ('Developpement web', 3.0),
     ('Anglais professionnel', 1.5),
     ('Gestion de projet', 2.0);
 

@@ -1,17 +1,23 @@
-# Sauvegarde logique de la base multi_lang
-pg_dump -U postgres -d multi_lang -f backup/dumps_generes/multi_lang.sql
+# Sauvegarde logique
+
+pg_dump -U postgres -d multi_lang -f multi_lang.sql
 
 # Création de la base de restauration
+
 createdb -U postgres BUT3_backup
 
 # Restauration complète
-psql -U postgres -d BUT3_backup -f backup/dumps_generes/multi_lang.sql
 
-# Dump au format custom pour restauration ciblée
-pg_dump -U postgres -d multi_lang -Fc -f backup/dumps_generes/multi_lang.dump
+psql -U postgres -d BUT3_backup -f multi_lang.sql
 
-# Création d'une base vide pour restaurer uniquement la table étudiants
+# Dump custom
+
+pg_dump -U postgres -d multi_lang -Fc -f multi_lang.dump
+
+# Base vide
+
 createdb -U postgres BUT3_etudiants_only
 
-# Restauration ciblée uniquement de la table etudiants
-pg_restore -U postgres -d BUT3_etudiants_only -t etudiants backup/dumps_generes/multi_lang.dump
+# Restauration de la table étudiants uniquement
+
+pg_restore -U postgres -d BUT3_etudiants_only -t etudiants multi_lang.dump
