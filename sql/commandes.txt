@@ -1,6 +1,8 @@
-psql -U postgres
-\i sql/01_creation_base.sql
-\c multi_lang
-\i sql/02_tables_insertions.sql
-\i sql/03_utilisateurs_privileges.sql
-\i sql/04_verifications.sql
+# PowerShell Windows : force l'affichage UTF-8 avant d'exécuter les commandes.
+chcp 65001
+$env:PGCLIENTENCODING = "UTF8"
+
+psql -U postgres -d postgres -v ON_ERROR_STOP=1 -f sql/01_creation_base.sql
+psql -U postgres -d multi_lang -v ON_ERROR_STOP=1 -f sql/02_tables_insertions.sql
+psql -U postgres -d multi_lang -v ON_ERROR_STOP=1 -f sql/03_utilisateurs_privileges.sql
+psql -U postgres -d multi_lang -v ON_ERROR_STOP=1 -f sql/04_verifications.sql

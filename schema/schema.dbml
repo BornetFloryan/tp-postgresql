@@ -1,0 +1,24 @@
+Table etudiants {
+  id_etudiant integer [pk, increment]
+  nom varchar(100) [not null]
+  prenom varchar(100) [not null]
+  email varchar(150) [not null, unique]
+  groupe varchar(20) [not null]
+}
+
+Table matieres {
+  id_matiere integer [pk, increment]
+  libelle varchar(100) [not null]
+  coefficient numeric(3,1) [not null, note: 'Strictement positif']
+}
+
+Table notes {
+  id_note integer [pk, increment]
+  id_etudiant integer [not null]
+  id_matiere integer [not null]
+  note numeric(4,2) [not null, note: 'Entre 0 et 20']
+  date_evaluation date [default: `CURRENT_DATE`]
+}
+
+Ref: notes.id_etudiant > etudiants.id_etudiant [delete: cascade]
+Ref: notes.id_matiere > matieres.id_matiere [delete: cascade]

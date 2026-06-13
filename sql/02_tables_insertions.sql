@@ -1,3 +1,5 @@
+\encoding UTF8
+
 CREATE TABLE etudiants (
     id_etudiant SERIAL PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
@@ -25,12 +27,18 @@ CREATE TABLE notes (
     CONSTRAINT fk_notes_matieres FOREIGN KEY (id_matiere) REFERENCES matieres(id_matiere) ON DELETE CASCADE
 );
 
+CREATE COLLATION tri_francais (
+    PROVIDER = icu,
+    LOCALE = 'fr-FR-u-ks-level1',
+    DETERMINISTIC = false
+);
+
 INSERT INTO
     etudiants (nom, prenom, email, groupe)
 VALUES
     (
-        'Evrard',
-        'Chloe',
+        'Évrard',
+        'Chloé',
         'chloe.evrard@but.fr',
         'BUT3 A'
     ),
@@ -40,20 +48,22 @@ VALUES
         'leo.beranger@but.fr',
         'BUT3 A'
     ),
-    ('Noel', 'Anais', 'anais.noel@but.fr', 'BUT3 B'),
+    ('Noël', 'Anaïs', 'anais.noel@but.fr', 'BUT3 B'),
     (
-        'Caglar',
-        'Emile',
+        'Çağlar',
+        'Émile',
         'emile.caglar@but.fr',
         'BUT3 B'
     ),
-    ('Durand', 'Zoe', 'zoe.durand@but.fr', 'BUT3 A');
+    ('Durand', 'Zoé', 'zoe.durand@but.fr', 'BUT3 A'),
+    ('李', '梅', 'mei.li@but.fr', 'BUT3 international'),
+    ('العلمي', 'ليلى', 'leila.alami@but.fr', 'BUT3 international');
 
 INSERT INTO
     matieres (libelle, coefficient)
 VALUES
-    ('Base de donnees avancee', 2.0),
-    ('Developpement web', 3.0),
+    ('Base de données avancée', 2.0),
+    ('Développement web', 3.0),
     ('Anglais professionnel', 1.5),
     ('Gestion de projet', 2.0);
 
@@ -65,4 +75,6 @@ VALUES
     (2, 1, 12.75),
     (3, 3, 16.25),
     (4, 4, 13.50),
-    (5, 1, 17.00);
+    (5, 1, 17.00),
+    (6, 2, 18.00),
+    (7, 3, 15.00);

@@ -2,8 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 17.0
--- Dumped by pg_dump version 17.0
+\restrict ADUmO73zMiij0YLhIfIw9Fkmyh6j1trdx51Xa5Ur8BX6sAdJaylw2tvJh8YbqIC
+
+-- Dumped from database version 17.10
+-- Dumped by pg_dump version 17.10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -17,12 +19,19 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: tri_francais; Type: COLLATION; Schema: public; Owner: -
+--
+
+CREATE COLLATION public.tri_francais (provider = icu, deterministic = false, locale = 'fr-FR-u-ks-level1');
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: etudiants; Type: TABLE; Schema: public; Owner: postgres
+-- Name: etudiants; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.etudiants (
@@ -34,10 +43,8 @@ CREATE TABLE public.etudiants (
 );
 
 
-ALTER TABLE public.etudiants OWNER TO postgres;
-
 --
--- Name: etudiants_id_etudiant_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: etudiants_id_etudiant_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.etudiants_id_etudiant_seq
@@ -49,17 +56,15 @@ CREATE SEQUENCE public.etudiants_id_etudiant_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.etudiants_id_etudiant_seq OWNER TO postgres;
-
 --
--- Name: etudiants_id_etudiant_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: etudiants_id_etudiant_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.etudiants_id_etudiant_seq OWNED BY public.etudiants.id_etudiant;
 
 
 --
--- Name: matieres; Type: TABLE; Schema: public; Owner: postgres
+-- Name: matieres; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.matieres (
@@ -70,10 +75,8 @@ CREATE TABLE public.matieres (
 );
 
 
-ALTER TABLE public.matieres OWNER TO postgres;
-
 --
--- Name: matieres_id_matiere_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: matieres_id_matiere_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.matieres_id_matiere_seq
@@ -85,17 +88,15 @@ CREATE SEQUENCE public.matieres_id_matiere_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.matieres_id_matiere_seq OWNER TO postgres;
-
 --
--- Name: matieres_id_matiere_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: matieres_id_matiere_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.matieres_id_matiere_seq OWNED BY public.matieres.id_matiere;
 
 
 --
--- Name: notes; Type: TABLE; Schema: public; Owner: postgres
+-- Name: notes; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.notes (
@@ -108,10 +109,8 @@ CREATE TABLE public.notes (
 );
 
 
-ALTER TABLE public.notes OWNER TO postgres;
-
 --
--- Name: notes_id_note_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: notes_id_note_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.notes_id_note_seq
@@ -123,98 +122,100 @@ CREATE SEQUENCE public.notes_id_note_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.notes_id_note_seq OWNER TO postgres;
-
 --
--- Name: notes_id_note_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: notes_id_note_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.notes_id_note_seq OWNED BY public.notes.id_note;
 
 
 --
--- Name: etudiants id_etudiant; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: etudiants id_etudiant; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.etudiants ALTER COLUMN id_etudiant SET DEFAULT nextval('public.etudiants_id_etudiant_seq'::regclass);
 
 
 --
--- Name: matieres id_matiere; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: matieres id_matiere; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.matieres ALTER COLUMN id_matiere SET DEFAULT nextval('public.matieres_id_matiere_seq'::regclass);
 
 
 --
--- Name: notes id_note; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: notes id_note; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.notes ALTER COLUMN id_note SET DEFAULT nextval('public.notes_id_note_seq'::regclass);
 
 
 --
--- Data for Name: etudiants; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: etudiants; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.etudiants (id_etudiant, nom, prenom, email, groupe) FROM stdin;
-1	Evrard	Chloe	chloe.evrard@but.fr	BUT3 A
+1	Évrard	Chloé	chloe.evrard@but.fr	BUT3 A
 2	Beranger	Leo	leo.beranger@but.fr	BUT3 A
-3	Noel	Anais	anais.noel@but.fr	BUT3 B
-4	Caglar	Emile	emile.caglar@but.fr	BUT3 B
-5	Durand	Zoe	zoe.durand@but.fr	BUT3 A
+3	Noël	Anaïs	anais.noel@but.fr	BUT3 B
+4	Çağlar	Émile	emile.caglar@but.fr	BUT3 B
+5	Durand	Zoé	zoe.durand@but.fr	BUT3 A
+6	李	梅	mei.li@but.fr	BUT3 international
+7	العلمي	ليلى	leila.alami@but.fr	BUT3 international
 \.
 
 
 --
--- Data for Name: matieres; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: matieres; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.matieres (id_matiere, libelle, coefficient) FROM stdin;
-1	Base de donnees avancee	2.0
-2	Developpement web	3.0
+1	Base de données avancée	2.0
+2	Développement web	3.0
 3	Anglais professionnel	1.5
 4	Gestion de projet	2.0
 \.
 
 
 --
--- Data for Name: notes; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: notes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.notes (id_note, id_etudiant, id_matiere, note, date_evaluation) FROM stdin;
-1	1	1	15.50	2026-06-02
-2	1	2	14.00	2026-06-02
-3	2	1	12.75	2026-06-02
-4	3	3	16.25	2026-06-02
-5	4	4	13.50	2026-06-02
-6	5	1	17.00	2026-06-02
+1	1	1	15.50	2026-06-13
+2	1	2	14.00	2026-06-13
+3	2	1	12.75	2026-06-13
+4	3	3	16.25	2026-06-13
+5	4	4	13.50	2026-06-13
+6	5	1	17.00	2026-06-13
+7	6	2	18.00	2026-06-13
+8	7	3	15.00	2026-06-13
 \.
 
 
 --
--- Name: etudiants_id_etudiant_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: etudiants_id_etudiant_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.etudiants_id_etudiant_seq', 5, true);
+SELECT pg_catalog.setval('public.etudiants_id_etudiant_seq', 7, true);
 
 
 --
--- Name: matieres_id_matiere_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: matieres_id_matiere_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.matieres_id_matiere_seq', 4, true);
 
 
 --
--- Name: notes_id_note_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: notes_id_note_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.notes_id_note_seq', 6, true);
+SELECT pg_catalog.setval('public.notes_id_note_seq', 8, true);
 
 
 --
--- Name: etudiants etudiants_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: etudiants etudiants_email_key; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.etudiants
@@ -222,7 +223,7 @@ ALTER TABLE ONLY public.etudiants
 
 
 --
--- Name: etudiants etudiants_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: etudiants etudiants_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.etudiants
@@ -230,7 +231,7 @@ ALTER TABLE ONLY public.etudiants
 
 
 --
--- Name: matieres matieres_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: matieres matieres_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.matieres
@@ -238,7 +239,7 @@ ALTER TABLE ONLY public.matieres
 
 
 --
--- Name: notes notes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: notes notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.notes
@@ -246,7 +247,7 @@ ALTER TABLE ONLY public.notes
 
 
 --
--- Name: notes fk_notes_etudiants; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: notes fk_notes_etudiants; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.notes
@@ -254,7 +255,7 @@ ALTER TABLE ONLY public.notes
 
 
 --
--- Name: notes fk_notes_matieres; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: notes fk_notes_matieres; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.notes
@@ -262,20 +263,8 @@ ALTER TABLE ONLY public.notes
 
 
 --
--- Name: SCHEMA public; Type: ACL; Schema: -; Owner: pg_database_owner
---
-
-GRANT USAGE ON SCHEMA public TO readonly_user;
-
-
---
--- Name: TABLE notes; Type: ACL; Schema: public; Owner: postgres
---
-
-GRANT SELECT ON TABLE public.notes TO readonly_user;
-
-
---
 -- PostgreSQL database dump complete
 --
+
+\unrestrict ADUmO73zMiij0YLhIfIw9Fkmyh6j1trdx51Xa5Ur8BX6sAdJaylw2tvJh8YbqIC
 

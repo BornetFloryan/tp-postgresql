@@ -1,0 +1,30 @@
+PLAN DE PRÉSENTATION - TP POSTGRESQL
+
+1. Objectif du projet
+   - Administrer une base PostgreSQL multilingue.
+   - Gérer les contraintes, utilisateurs, privilèges et sauvegardes.
+
+2. Création de la base
+   - Base multi_lang en UTF-8.
+   - Tables etudiants, matieres et notes.
+   - Clés primaires, clés étrangères et contraintes CHECK.
+
+3. Gestion multilingue
+   - Données françaises accentuées, chinoises et arabes.
+   - Collation ICU tri_francais.
+   - Démonstration du tri avec COLLATE tri_francais.
+
+4. Utilisateurs et privilèges
+   - admin_user : administration.
+   - readonly_user : lecture de notes uniquement.
+   - Démonstration des droits autorisés et refusés.
+
+5. Sauvegarde et restauration
+   - Sauvegarde SQL complète.
+   - Sauvegarde custom complète.
+   - Sauvegarde et restauration de la table etudiants avec ses dépendances.
+
+6. Vérifications et conclusion
+   - Contrôle de l'encodage et des données.
+   - Contrôle des contraintes et privilèges.
+   - Validation des restaurations.
