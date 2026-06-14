@@ -3,69 +3,39 @@
 CREATE TABLE etudiants (
     id_etudiant SERIAL PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
-    prenom VARCHAR(100) NOT NULL,
-    email VARCHAR(150) UNIQUE NOT NULL,
-    groupe VARCHAR(20) NOT NULL
+    prenom VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE matieres (
     id_matiere SERIAL PRIMARY KEY,
-    libelle VARCHAR(100) NOT NULL,
-    coefficient NUMERIC(3, 1) NOT NULL CHECK (coefficient > 0)
+    libelle VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE notes (
     id_note SERIAL PRIMARY KEY,
     id_etudiant INT NOT NULL,
     id_matiere INT NOT NULL,
-    note NUMERIC(4, 2) NOT NULL CHECK (
-        note >= 0
-        AND note <= 20
-    ),
-    date_evaluation DATE DEFAULT CURRENT_DATE,
-    CONSTRAINT fk_notes_etudiants FOREIGN KEY (id_etudiant) REFERENCES etudiants(id_etudiant) ON DELETE CASCADE,
-    CONSTRAINT fk_notes_matieres FOREIGN KEY (id_matiere) REFERENCES matieres(id_matiere) ON DELETE CASCADE
-);
-
-CREATE COLLATION tri_francais (
-    PROVIDER = icu,
-    LOCALE = 'fr-FR-u-ks-level1',
-    DETERMINISTIC = false
+    note NUMERIC(4, 2) NOT NULL,
+    CONSTRAINT fk_notes_etudiants FOREIGN KEY (id_etudiant) REFERENCES etudiants(id_etudiant),
+    CONSTRAINT fk_notes_matieres FOREIGN KEY (id_matiere) REFERENCES matieres(id_matiere)
 );
 
 INSERT INTO
-    etudiants (nom, prenom, email, groupe)
+    etudiants (nom, prenom)
 VALUES
-    (
-        'Évrard',
-        'Chloé',
-        'chloe.evrard@but.fr',
-        'BUT3 A'
-    ),
-    (
-        'Beranger',
-        'Leo',
-        'leo.beranger@but.fr',
-        'BUT3 A'
-    ),
-    ('Noël', 'Anaïs', 'anais.noel@but.fr', 'BUT3 B'),
-    (
-        'Çağlar',
-        'Émile',
-        'emile.caglar@but.fr',
-        'BUT3 B'
-    ),
-    ('Durand', 'Zoé', 'zoe.durand@but.fr', 'BUT3 A'),
-    ('李', '梅', 'mei.li@but.fr', 'BUT3 international'),
-    ('العلمي', 'ليلى', 'leila.alami@but.fr', 'BUT3 international');
+    ('Évrard', 'Chloé'),
+    ('Béranger', 'Léo'),
+    ('Noël', 'Anaïs'),
+    ('Çağlar', 'Émile'),
+    ('Durand', 'Zoé');
 
 INSERT INTO
-    matieres (libelle, coefficient)
+    matieres (libelle)
 VALUES
-    ('Base de données avancée', 2.0),
-    ('Développement web', 3.0),
-    ('Anglais professionnel', 1.5),
-    ('Gestion de projet', 2.0);
+    ('Base de données avancée'),
+    ('Développement web'),
+    ('Anglais professionnel'),
+    ('Gestion de projet');
 
 INSERT INTO
     notes (id_etudiant, id_matiere, note)
@@ -75,6 +45,10 @@ VALUES
     (2, 1, 12.75),
     (3, 3, 16.25),
     (4, 4, 13.50),
-    (5, 1, 17.00),
-    (6, 2, 18.00),
-    (7, 3, 15.00);
+    (5, 1, 17.00);
+
+SELECT
+    nom,
+    prenom
+FROM etudiants
+ORDER BY nom;

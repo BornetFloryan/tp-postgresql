@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict ADUmO73zMiij0YLhIfIw9Fkmyh6j1trdx51Xa5Ur8BX6sAdJaylw2tvJh8YbqIC
+\restrict M0DOnksYh9IGW7unuOLVCEqBRMdMtSSkw81smIrO4HTKG6HYZCp5TlhhcwWieU2
 
 -- Dumped from database version 17.10
 -- Dumped by pg_dump version 17.10
@@ -19,32 +19,25 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- Name: tri_francais; Type: COLLATION; Schema: public; Owner: -
---
-
-CREATE COLLATION public.tri_francais (provider = icu, deterministic = false, locale = 'fr-FR-u-ks-level1');
-
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
 
 --
--- Name: etudiants; Type: TABLE; Schema: public; Owner: -
+-- Name: etudiants; Type: TABLE; Schema: public; Owner: admin_user
 --
 
 CREATE TABLE public.etudiants (
     id_etudiant integer NOT NULL,
     nom character varying(100) NOT NULL,
-    prenom character varying(100) NOT NULL,
-    email character varying(150) NOT NULL,
-    groupe character varying(20) NOT NULL
+    prenom character varying(100) NOT NULL
 );
 
 
+ALTER TABLE public.etudiants OWNER TO admin_user;
+
 --
--- Name: etudiants_id_etudiant_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: etudiants_id_etudiant_seq; Type: SEQUENCE; Schema: public; Owner: admin_user
 --
 
 CREATE SEQUENCE public.etudiants_id_etudiant_seq
@@ -56,27 +49,29 @@ CREATE SEQUENCE public.etudiants_id_etudiant_seq
     CACHE 1;
 
 
+ALTER SEQUENCE public.etudiants_id_etudiant_seq OWNER TO admin_user;
+
 --
--- Name: etudiants_id_etudiant_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: etudiants_id_etudiant_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin_user
 --
 
 ALTER SEQUENCE public.etudiants_id_etudiant_seq OWNED BY public.etudiants.id_etudiant;
 
 
 --
--- Name: matieres; Type: TABLE; Schema: public; Owner: -
+-- Name: matieres; Type: TABLE; Schema: public; Owner: admin_user
 --
 
 CREATE TABLE public.matieres (
     id_matiere integer NOT NULL,
-    libelle character varying(100) NOT NULL,
-    coefficient numeric(3,1) NOT NULL,
-    CONSTRAINT matieres_coefficient_check CHECK ((coefficient > (0)::numeric))
+    libelle character varying(100) NOT NULL
 );
 
 
+ALTER TABLE public.matieres OWNER TO admin_user;
+
 --
--- Name: matieres_id_matiere_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: matieres_id_matiere_seq; Type: SEQUENCE; Schema: public; Owner: admin_user
 --
 
 CREATE SEQUENCE public.matieres_id_matiere_seq
@@ -88,29 +83,31 @@ CREATE SEQUENCE public.matieres_id_matiere_seq
     CACHE 1;
 
 
+ALTER SEQUENCE public.matieres_id_matiere_seq OWNER TO admin_user;
+
 --
--- Name: matieres_id_matiere_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: matieres_id_matiere_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin_user
 --
 
 ALTER SEQUENCE public.matieres_id_matiere_seq OWNED BY public.matieres.id_matiere;
 
 
 --
--- Name: notes; Type: TABLE; Schema: public; Owner: -
+-- Name: notes; Type: TABLE; Schema: public; Owner: admin_user
 --
 
 CREATE TABLE public.notes (
     id_note integer NOT NULL,
     id_etudiant integer NOT NULL,
     id_matiere integer NOT NULL,
-    note numeric(4,2) NOT NULL,
-    date_evaluation date DEFAULT CURRENT_DATE,
-    CONSTRAINT notes_note_check CHECK (((note >= (0)::numeric) AND (note <= (20)::numeric)))
+    note numeric(4,2) NOT NULL
 );
 
 
+ALTER TABLE public.notes OWNER TO admin_user;
+
 --
--- Name: notes_id_note_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: notes_id_note_seq; Type: SEQUENCE; Schema: public; Owner: admin_user
 --
 
 CREATE SEQUENCE public.notes_id_note_seq
@@ -122,108 +119,98 @@ CREATE SEQUENCE public.notes_id_note_seq
     CACHE 1;
 
 
+ALTER SEQUENCE public.notes_id_note_seq OWNER TO admin_user;
+
 --
--- Name: notes_id_note_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: notes_id_note_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin_user
 --
 
 ALTER SEQUENCE public.notes_id_note_seq OWNED BY public.notes.id_note;
 
 
 --
--- Name: etudiants id_etudiant; Type: DEFAULT; Schema: public; Owner: -
+-- Name: etudiants id_etudiant; Type: DEFAULT; Schema: public; Owner: admin_user
 --
 
 ALTER TABLE ONLY public.etudiants ALTER COLUMN id_etudiant SET DEFAULT nextval('public.etudiants_id_etudiant_seq'::regclass);
 
 
 --
--- Name: matieres id_matiere; Type: DEFAULT; Schema: public; Owner: -
+-- Name: matieres id_matiere; Type: DEFAULT; Schema: public; Owner: admin_user
 --
 
 ALTER TABLE ONLY public.matieres ALTER COLUMN id_matiere SET DEFAULT nextval('public.matieres_id_matiere_seq'::regclass);
 
 
 --
--- Name: notes id_note; Type: DEFAULT; Schema: public; Owner: -
+-- Name: notes id_note; Type: DEFAULT; Schema: public; Owner: admin_user
 --
 
 ALTER TABLE ONLY public.notes ALTER COLUMN id_note SET DEFAULT nextval('public.notes_id_note_seq'::regclass);
 
 
 --
--- Data for Name: etudiants; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: etudiants; Type: TABLE DATA; Schema: public; Owner: admin_user
 --
 
-COPY public.etudiants (id_etudiant, nom, prenom, email, groupe) FROM stdin;
-1	Évrard	Chloé	chloe.evrard@but.fr	BUT3 A
-2	Beranger	Leo	leo.beranger@but.fr	BUT3 A
-3	Noël	Anaïs	anais.noel@but.fr	BUT3 B
-4	Çağlar	Émile	emile.caglar@but.fr	BUT3 B
-5	Durand	Zoé	zoe.durand@but.fr	BUT3 A
-6	李	梅	mei.li@but.fr	BUT3 international
-7	العلمي	ليلى	leila.alami@but.fr	BUT3 international
+COPY public.etudiants (id_etudiant, nom, prenom) FROM stdin;
+1	Évrard	Chloé
+2	Béranger	Léo
+3	Noël	Anaïs
+4	Çağlar	Émile
+5	Durand	Zoé
 \.
 
 
 --
--- Data for Name: matieres; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: matieres; Type: TABLE DATA; Schema: public; Owner: admin_user
 --
 
-COPY public.matieres (id_matiere, libelle, coefficient) FROM stdin;
-1	Base de données avancée	2.0
-2	Développement web	3.0
-3	Anglais professionnel	1.5
-4	Gestion de projet	2.0
+COPY public.matieres (id_matiere, libelle) FROM stdin;
+1	Base de données avancée
+2	Développement web
+3	Anglais professionnel
+4	Gestion de projet
 \.
 
 
 --
--- Data for Name: notes; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: notes; Type: TABLE DATA; Schema: public; Owner: admin_user
 --
 
-COPY public.notes (id_note, id_etudiant, id_matiere, note, date_evaluation) FROM stdin;
-1	1	1	15.50	2026-06-13
-2	1	2	14.00	2026-06-13
-3	2	1	12.75	2026-06-13
-4	3	3	16.25	2026-06-13
-5	4	4	13.50	2026-06-13
-6	5	1	17.00	2026-06-13
-7	6	2	18.00	2026-06-13
-8	7	3	15.00	2026-06-13
+COPY public.notes (id_note, id_etudiant, id_matiere, note) FROM stdin;
+1	1	1	15.50
+2	1	2	14.00
+3	2	1	12.75
+4	3	3	16.25
+5	4	4	13.50
+6	5	1	17.00
 \.
 
 
 --
--- Name: etudiants_id_etudiant_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: etudiants_id_etudiant_seq; Type: SEQUENCE SET; Schema: public; Owner: admin_user
 --
 
-SELECT pg_catalog.setval('public.etudiants_id_etudiant_seq', 7, true);
+SELECT pg_catalog.setval('public.etudiants_id_etudiant_seq', 5, true);
 
 
 --
--- Name: matieres_id_matiere_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: matieres_id_matiere_seq; Type: SEQUENCE SET; Schema: public; Owner: admin_user
 --
 
 SELECT pg_catalog.setval('public.matieres_id_matiere_seq', 4, true);
 
 
 --
--- Name: notes_id_note_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: notes_id_note_seq; Type: SEQUENCE SET; Schema: public; Owner: admin_user
 --
 
-SELECT pg_catalog.setval('public.notes_id_note_seq', 8, true);
-
-
---
--- Name: etudiants etudiants_email_key; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.etudiants
-    ADD CONSTRAINT etudiants_email_key UNIQUE (email);
+SELECT pg_catalog.setval('public.notes_id_note_seq', 6, true);
 
 
 --
--- Name: etudiants etudiants_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: etudiants etudiants_pkey; Type: CONSTRAINT; Schema: public; Owner: admin_user
 --
 
 ALTER TABLE ONLY public.etudiants
@@ -231,7 +218,7 @@ ALTER TABLE ONLY public.etudiants
 
 
 --
--- Name: matieres matieres_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: matieres matieres_pkey; Type: CONSTRAINT; Schema: public; Owner: admin_user
 --
 
 ALTER TABLE ONLY public.matieres
@@ -239,7 +226,7 @@ ALTER TABLE ONLY public.matieres
 
 
 --
--- Name: notes notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: notes notes_pkey; Type: CONSTRAINT; Schema: public; Owner: admin_user
 --
 
 ALTER TABLE ONLY public.notes
@@ -247,24 +234,38 @@ ALTER TABLE ONLY public.notes
 
 
 --
--- Name: notes fk_notes_etudiants; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: notes fk_notes_etudiants; Type: FK CONSTRAINT; Schema: public; Owner: admin_user
 --
 
 ALTER TABLE ONLY public.notes
-    ADD CONSTRAINT fk_notes_etudiants FOREIGN KEY (id_etudiant) REFERENCES public.etudiants(id_etudiant) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_notes_etudiants FOREIGN KEY (id_etudiant) REFERENCES public.etudiants(id_etudiant);
 
 
 --
--- Name: notes fk_notes_matieres; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: notes fk_notes_matieres; Type: FK CONSTRAINT; Schema: public; Owner: admin_user
 --
 
 ALTER TABLE ONLY public.notes
-    ADD CONSTRAINT fk_notes_matieres FOREIGN KEY (id_matiere) REFERENCES public.matieres(id_matiere) ON DELETE CASCADE;
+    ADD CONSTRAINT fk_notes_matieres FOREIGN KEY (id_matiere) REFERENCES public.matieres(id_matiere);
+
+
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: pg_database_owner
+--
+
+GRANT USAGE ON SCHEMA public TO readonly_user;
+
+
+--
+-- Name: TABLE notes; Type: ACL; Schema: public; Owner: admin_user
+--
+
+GRANT SELECT ON TABLE public.notes TO readonly_user;
 
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict ADUmO73zMiij0YLhIfIw9Fkmyh6j1trdx51Xa5Ur8BX6sAdJaylw2tvJh8YbqIC
+\unrestrict M0DOnksYh9IGW7unuOLVCEqBRMdMtSSkw81smIrO4HTKG6HYZCp5TlhhcwWieU2
 
