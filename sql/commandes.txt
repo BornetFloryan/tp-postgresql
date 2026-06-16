@@ -1,8 +1,11 @@
-# Création de la base multi_lang
-psql -U postgres -d postgres -v ON_ERROR_STOP=1 -f sql/01_creation_base.sql
+# Exercice 1 : créer la base multi_lang
+psql -U postgres -d postgres -f sql/01_creation_base.sql
 
-# Création des tables, insertion des données et tri des noms accentués
-psql -U postgres -d multi_lang -v ON_ERROR_STOP=1 -f sql/02_tables_insertions.sql
+# Exercice 1 : créer les tables, insérer les données avec accents et trier
+psql -U postgres -d multi_lang -f sql/02_tables_insertions.sql
 
-# Création des utilisateurs et attribution des privilèges
-psql -U postgres -d multi_lang -v ON_ERROR_STOP=1 -f sql/03_utilisateurs_privileges.sql
+# Exercice 2 : créer les utilisateurs
+psql -U postgres -d multi_lang -f sql/03_utilisateurs.sql
+
+# Exercice 3 : donner les privilèges
+psql -U postgres -d multi_lang -f sql/04_privileges.sql

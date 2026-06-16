@@ -1,0 +1,21 @@
+# Exercice 5 : sauvegarde et restauration de la table etudiants
+
+# Sauvegarde de la table etudiants au format SQL
+pg_dump -U postgres -d multi_lang -t etudiants -f backup/dumps_generes/multi_lang_etudiants.sql
+
+# Sauvegarde de la table etudiants au format dump
+pg_dump -U postgres -d multi_lang -Fc -t etudiants -f backup/dumps_generes/multi_lang_etudiants.dump
+
+# Restauration du fichier SQL
+dropdb -U postgres --if-exists BUT3_etudiants_only
+
+createdb -U postgres BUT3_etudiants_only
+
+psql -U postgres -d BUT3_etudiants_only -f backup/dumps_generes/multi_lang_etudiants.sql
+
+# Restauration du fichier dump
+dropdb -U postgres --if-exists BUT3_etudiants_only_dump
+
+createdb -U postgres BUT3_etudiants_only_dump
+
+pg_restore -U postgres -d BUT3_etudiants_only_dump backup/dumps_generes/multi_lang_etudiants.dump

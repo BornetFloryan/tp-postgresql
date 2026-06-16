@@ -2,10 +2,8 @@
 -- PostgreSQL database dump
 --
 
-\restrict M0DOnksYh9IGW7unuOLVCEqBRMdMtSSkw81smIrO4HTKG6HYZCp5TlhhcwWieU2
-
--- Dumped from database version 17.10
--- Dumped by pg_dump version 17.10
+-- Dumped from database version 17.0
+-- Dumped by pg_dump version 17.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -24,7 +22,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: etudiants; Type: TABLE; Schema: public; Owner: admin_user
+-- Name: etudiants; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.etudiants (
@@ -34,10 +32,10 @@ CREATE TABLE public.etudiants (
 );
 
 
-ALTER TABLE public.etudiants OWNER TO admin_user;
+ALTER TABLE public.etudiants OWNER TO postgres;
 
 --
--- Name: etudiants_id_etudiant_seq; Type: SEQUENCE; Schema: public; Owner: admin_user
+-- Name: etudiants_id_etudiant_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.etudiants_id_etudiant_seq
@@ -49,17 +47,17 @@ CREATE SEQUENCE public.etudiants_id_etudiant_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.etudiants_id_etudiant_seq OWNER TO admin_user;
+ALTER SEQUENCE public.etudiants_id_etudiant_seq OWNER TO postgres;
 
 --
--- Name: etudiants_id_etudiant_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin_user
+-- Name: etudiants_id_etudiant_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.etudiants_id_etudiant_seq OWNED BY public.etudiants.id_etudiant;
 
 
 --
--- Name: matieres; Type: TABLE; Schema: public; Owner: admin_user
+-- Name: matieres; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.matieres (
@@ -68,10 +66,10 @@ CREATE TABLE public.matieres (
 );
 
 
-ALTER TABLE public.matieres OWNER TO admin_user;
+ALTER TABLE public.matieres OWNER TO postgres;
 
 --
--- Name: matieres_id_matiere_seq; Type: SEQUENCE; Schema: public; Owner: admin_user
+-- Name: matieres_id_matiere_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.matieres_id_matiere_seq
@@ -83,17 +81,17 @@ CREATE SEQUENCE public.matieres_id_matiere_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.matieres_id_matiere_seq OWNER TO admin_user;
+ALTER SEQUENCE public.matieres_id_matiere_seq OWNER TO postgres;
 
 --
--- Name: matieres_id_matiere_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin_user
+-- Name: matieres_id_matiere_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.matieres_id_matiere_seq OWNED BY public.matieres.id_matiere;
 
 
 --
--- Name: notes; Type: TABLE; Schema: public; Owner: admin_user
+-- Name: notes; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.notes (
@@ -104,10 +102,10 @@ CREATE TABLE public.notes (
 );
 
 
-ALTER TABLE public.notes OWNER TO admin_user;
+ALTER TABLE public.notes OWNER TO postgres;
 
 --
--- Name: notes_id_note_seq; Type: SEQUENCE; Schema: public; Owner: admin_user
+-- Name: notes_id_note_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
 CREATE SEQUENCE public.notes_id_note_seq
@@ -119,38 +117,38 @@ CREATE SEQUENCE public.notes_id_note_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.notes_id_note_seq OWNER TO admin_user;
+ALTER SEQUENCE public.notes_id_note_seq OWNER TO postgres;
 
 --
--- Name: notes_id_note_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: admin_user
+-- Name: notes_id_note_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
 ALTER SEQUENCE public.notes_id_note_seq OWNED BY public.notes.id_note;
 
 
 --
--- Name: etudiants id_etudiant; Type: DEFAULT; Schema: public; Owner: admin_user
+-- Name: etudiants id_etudiant; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.etudiants ALTER COLUMN id_etudiant SET DEFAULT nextval('public.etudiants_id_etudiant_seq'::regclass);
 
 
 --
--- Name: matieres id_matiere; Type: DEFAULT; Schema: public; Owner: admin_user
+-- Name: matieres id_matiere; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.matieres ALTER COLUMN id_matiere SET DEFAULT nextval('public.matieres_id_matiere_seq'::regclass);
 
 
 --
--- Name: notes id_note; Type: DEFAULT; Schema: public; Owner: admin_user
+-- Name: notes id_note; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.notes ALTER COLUMN id_note SET DEFAULT nextval('public.notes_id_note_seq'::regclass);
 
 
 --
--- Data for Name: etudiants; Type: TABLE DATA; Schema: public; Owner: admin_user
+-- Data for Name: etudiants; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.etudiants (id_etudiant, nom, prenom) FROM stdin;
@@ -163,7 +161,7 @@ COPY public.etudiants (id_etudiant, nom, prenom) FROM stdin;
 
 
 --
--- Data for Name: matieres; Type: TABLE DATA; Schema: public; Owner: admin_user
+-- Data for Name: matieres; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.matieres (id_matiere, libelle) FROM stdin;
@@ -175,7 +173,7 @@ COPY public.matieres (id_matiere, libelle) FROM stdin;
 
 
 --
--- Data for Name: notes; Type: TABLE DATA; Schema: public; Owner: admin_user
+-- Data for Name: notes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.notes (id_note, id_etudiant, id_matiere, note) FROM stdin;
@@ -189,28 +187,28 @@ COPY public.notes (id_note, id_etudiant, id_matiere, note) FROM stdin;
 
 
 --
--- Name: etudiants_id_etudiant_seq; Type: SEQUENCE SET; Schema: public; Owner: admin_user
+-- Name: etudiants_id_etudiant_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.etudiants_id_etudiant_seq', 5, true);
 
 
 --
--- Name: matieres_id_matiere_seq; Type: SEQUENCE SET; Schema: public; Owner: admin_user
+-- Name: matieres_id_matiere_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.matieres_id_matiere_seq', 4, true);
 
 
 --
--- Name: notes_id_note_seq; Type: SEQUENCE SET; Schema: public; Owner: admin_user
+-- Name: notes_id_note_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.notes_id_note_seq', 6, true);
 
 
 --
--- Name: etudiants etudiants_pkey; Type: CONSTRAINT; Schema: public; Owner: admin_user
+-- Name: etudiants etudiants_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.etudiants
@@ -218,7 +216,7 @@ ALTER TABLE ONLY public.etudiants
 
 
 --
--- Name: matieres matieres_pkey; Type: CONSTRAINT; Schema: public; Owner: admin_user
+-- Name: matieres matieres_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.matieres
@@ -226,7 +224,7 @@ ALTER TABLE ONLY public.matieres
 
 
 --
--- Name: notes notes_pkey; Type: CONSTRAINT; Schema: public; Owner: admin_user
+-- Name: notes notes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.notes
@@ -234,19 +232,19 @@ ALTER TABLE ONLY public.notes
 
 
 --
--- Name: notes fk_notes_etudiants; Type: FK CONSTRAINT; Schema: public; Owner: admin_user
+-- Name: notes notes_id_etudiant_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.notes
-    ADD CONSTRAINT fk_notes_etudiants FOREIGN KEY (id_etudiant) REFERENCES public.etudiants(id_etudiant);
+    ADD CONSTRAINT notes_id_etudiant_fkey FOREIGN KEY (id_etudiant) REFERENCES public.etudiants(id_etudiant);
 
 
 --
--- Name: notes fk_notes_matieres; Type: FK CONSTRAINT; Schema: public; Owner: admin_user
+-- Name: notes notes_id_matiere_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.notes
-    ADD CONSTRAINT fk_notes_matieres FOREIGN KEY (id_matiere) REFERENCES public.matieres(id_matiere);
+    ADD CONSTRAINT notes_id_matiere_fkey FOREIGN KEY (id_matiere) REFERENCES public.matieres(id_matiere);
 
 
 --
@@ -257,7 +255,7 @@ GRANT USAGE ON SCHEMA public TO readonly_user;
 
 
 --
--- Name: TABLE notes; Type: ACL; Schema: public; Owner: admin_user
+-- Name: TABLE notes; Type: ACL; Schema: public; Owner: postgres
 --
 
 GRANT SELECT ON TABLE public.notes TO readonly_user;
@@ -266,6 +264,4 @@ GRANT SELECT ON TABLE public.notes TO readonly_user;
 --
 -- PostgreSQL database dump complete
 --
-
-\unrestrict M0DOnksYh9IGW7unuOLVCEqBRMdMtSSkw81smIrO4HTKG6HYZCp5TlhhcwWieU2
 

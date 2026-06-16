@@ -1,0 +1,21 @@
+# Exercice 4 : sauvegarde et restauration complete
+
+# Sauvegarde complete au format SQL
+pg_dump -U postgres -d multi_lang -f backup/dumps_generes/multi_lang.sql
+
+# Sauvegarde complete au format dump
+pg_dump -U postgres -d multi_lang -Fc -f backup/dumps_generes/multi_lang.dump
+
+# Restauration du fichier SQL
+dropdb -U postgres --if-exists BUT3_backup
+
+createdb -U postgres BUT3_backup
+
+psql -U postgres -d BUT3_backup -f backup/dumps_generes/multi_lang.sql
+
+# Restauration du fichier dump
+dropdb -U postgres --if-exists BUT3_backup_dump
+
+createdb -U postgres BUT3_backup_dump
+
+pg_restore -U postgres -d BUT3_backup_dump backup/dumps_generes/multi_lang.dump

@@ -1,4 +1,4 @@
-\encoding UTF8
+\encoding UTF8 
 
 CREATE TABLE etudiants (
     id_etudiant SERIAL PRIMARY KEY,
@@ -13,11 +13,9 @@ CREATE TABLE matieres (
 
 CREATE TABLE notes (
     id_note SERIAL PRIMARY KEY,
-    id_etudiant INT NOT NULL,
-    id_matiere INT NOT NULL,
-    note NUMERIC(4, 2) NOT NULL,
-    CONSTRAINT fk_notes_etudiants FOREIGN KEY (id_etudiant) REFERENCES etudiants(id_etudiant),
-    CONSTRAINT fk_notes_matieres FOREIGN KEY (id_matiere) REFERENCES matieres(id_matiere)
+    id_etudiant INT NOT NULL REFERENCES etudiants(id_etudiant),
+    id_matiere INT NOT NULL REFERENCES matieres(id_matiere),
+    note NUMERIC(4, 2) NOT NULL
 );
 
 INSERT INTO
@@ -50,5 +48,7 @@ VALUES
 SELECT
     nom,
     prenom
-FROM etudiants
-ORDER BY nom;
+FROM
+    etudiants
+ORDER BY
+    nom;
